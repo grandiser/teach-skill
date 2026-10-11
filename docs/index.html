@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Teach: An AI Teaching Skill for LLMs</title>
+    <meta name="description" content="Teach is an open-source AI teaching skill for LLMs. Get clear explanations of technical concepts, equations, code, and lecture slides, with concrete examples.">
+    <meta name="robots" content="index, follow">
+    <meta name="google-site-verification" content="quwB30AF7F9MkjWTl2Nw_AmAyIPiPzo367jf8-6fGWw">
+    <link rel="canonical" href="https://grandiser.github.io/teach-skill/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Teach: An AI Teaching Skill for LLMs">
+    <meta property="og:description" content="Turn an LLM into a clear tutor for technical concepts, equations, code, and slides.">
+    <meta property="og:url" content="https://grandiser.github.io/teach-skill/">
+    <meta property="og:image" content="https://raw.githubusercontent.com/grandiser/teach-skill/main/assets/social-preview.png">
+    <meta property="og:image:width" content="1280">
+    <meta property="og:image:height" content="640">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Teach: An AI Teaching Skill for LLMs">
+    <meta name="twitter:description" content="Clear explanations of technical concepts, equations, code, and slides—with concrete examples.">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/grandiser/teach-skill/main/assets/social-preview.png">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareSourceCode",
+        "name": "Teach",
+        "description": "An open-source teaching skill that guides large language models to explain technical concepts, equations, code, and lecture slides in plain language with concrete examples.",
+        "codeRepository": "https://github.com/grandiser/teach-skill",
+        "codeSampleType": "full",
+        "programmingLanguage": "Markdown",
+        "license": "https://spdx.org/licenses/MIT.html",
+        "keywords": ["AI teaching skill", "LLM tutor", "large language models", "technical explanations", "worked examples"],
+        "isAccessibleForFree": true
+      }
+    </script>
+    <style>
+      :root { color-scheme: light dark; font: 16px/1.6 system-ui, sans-serif; }
+      body { max-width: 760px; margin: 0 auto; padding: 48px 24px; color: CanvasText; background: Canvas; }
+      h1, h2 { line-height: 1.2; }
+      h1 { max-width: 14ch; font-size: clamp(2.5rem, 8vw, 4.5rem); letter-spacing: -.045em; }
+      h2 { margin-top: 2.5rem; }
+      p, li { max-width: 68ch; }
+      a { color: LinkText; }
+      .lead { font-size: 1.2rem; }
+      .install { overflow-wrap: anywhere; padding: 16px; border-radius: 8px; background: color-mix(in srgb, CanvasText 8%, Canvas); }
+      code { font-family: ui-monospace, monospace; }
+      .actions { display: flex; flex-wrap: wrap; gap: 16px; margin: 24px 0; }
+      .answer { padding-left: 16px; border-left: 3px solid color-mix(in srgb, LinkText 50%, Canvas); }
+      footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid color-mix(in srgb, CanvasText 20%, Canvas); }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <p>Open-source teaching instructions for large language models</p>
+        <h1>Make technical ideas easier to understand.</h1>
+        <p class="lead">Teach is a portable AI teaching skill that helps an LLM explain concepts, equations, notation, code, and lecture slides in plain language—with concrete worked examples.</p>
+        <p><img src="https://raw.githubusercontent.com/grandiser/teach-skill/main/assets/social-preview.png" alt="Teach, an open-source AI teaching skill for large language models" width="1280" height="640" style="width:100%;height:auto;border-radius:12px"></p>
+        <nav class="actions" aria-label="Project links">
+          <a href="https://github.com/grandiser/teach-skill">View the source on GitHub</a>
+          <a href="https://github.com/grandiser/teach-skill/blob/main/skills/teach/SKILL.md">Read the skill instructions</a>
+        </nav>
+      </header>
+
+      <section aria-labelledby="install">
+        <h2 id="install">Install Teach</h2>
+        <p>For AI coding agents supported by the Agent Skills CLI, run:</p>
+        <pre class="install"><code>npx skills add grandiser/teach-skill --skill teach --agent '*' --global</code></pre>
+        <p>To use Teach with another LLM, copy the contents of <a href="https://github.com/grandiser/teach-skill/blob/main/skills/teach/SKILL.md"><code>SKILL.md</code></a> into its custom instructions, system prompt, or saved prompt. This works with any LLM that accepts custom instructions; no special slash command or runtime is required.</p>
+      </section>
+
+      <section aria-labelledby="how">
+        <h2 id="how">How does Teach help an LLM explain a topic?</h2>
+        <p>Teach guides the model to state the main idea, define unfamiliar terms or notation, work through a small example, and connect the result to its practical meaning. It adapts the depth to the question, so a focused question gets a focused answer.</p>
+        <p>Here is an example prompt: <q>Explain how LLM inference works.</q> These are the unedited responses returned by two separate subagents asked that question. Teach was supplied to the second subagent.</p>
+        <h3>Without Teach</h3>
+        <blockquote>
+          <p>LLM inference is when a trained language model generates text in response to a prompt. It breaks the prompt into tokens, processes them, and predicts which token should come next. It adds that token and repeats the prediction until it reaches a stopping point. Then it converts the tokens into readable text.</p>
+        </blockquote>
+        <h3>With Teach</h3>
+        <blockquote>
+          <p>LLM inference is how a trained language model turns a prompt into a response. It generates the response one token at a time.</p>
+          <p>A <strong>token</strong> is a small piece of text. For example, “inference” might be one token or several. The model first splits the prompt into tokens, then processes them to estimate which token should come next.</p>
+          <p>Suppose the prompt is: <strong>“A dog says”</strong>. The model might assign high scores to “woof” and “hello,” and lower scores to “airplane.” A decoding rule chooses one of the likely tokens. If it chooses “woof,” the model adds that token to the prompt and predicts the next one. It repeats this process until it reaches a stopping point.</p>
+          <p>The model’s predictions come from patterns it learned during training. During inference, it uses those learned patterns; it does not update its training from the prompt.</p>
+          <p><strong>In short:</strong> inference is a repeating loop: read the text so far, choose the next token, and add it to the response.</p>
+        </blockquote>
+        <p>The wording varies from run to run; this example preserves the actual output from that run.</p>
+      </section>
+
+      <section aria-labelledby="use">
+        <h2 id="use">What can Teach explain?</h2>
+        <ul>
+          <li>Technical concepts and algorithms</li>
+          <li>Equations, symbols, and notation</li>
+          <li>Code and technical passages</li>
+          <li>Lecture slides, images, and excerpts</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="faq">
+        <h2 id="faq">Frequently asked questions</h2>
+        <h3>Is Teach tied to one AI model?</h3>
+        <p class="answer">No. The Markdown instructions are model-agnostic. Use the CLI with a supported agent or paste the instructions into any LLM that accepts them.</p>
+        <h3>Does installing Teach add a universal <code>/teach</code> command?</h3>
+        <p class="answer">No. Some agents may provide their own way to invoke installed skills. Teach also works when instructions are preloaded: just ask a normal question.</p>
+        <h3>Does Teach need dependencies or an API key?</h3>
+        <p class="answer">No. It is a Markdown instruction file and needs no runtime, package dependencies, or API key.</p>
+        <h3>How is the project licensed?</h3>
+        <p class="answer">Teach is available under the MIT License. Read the <a href="https://github.com/grandiser/teach-skill/blob/main/LICENSE">full license</a>.</p>
+      </section>
+    </main>
+    <footer>
+      <p><a href="https://github.com/grandiser/teach-skill">Teach on GitHub</a> · MIT License · Made for any LLM with custom instructions.</p>
+    </footer>
+  </body>
+</html>

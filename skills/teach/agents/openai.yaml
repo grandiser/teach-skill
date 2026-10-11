@@ -1,0 +1,4 @@
+interface:
+  display_name: "Teach"
+  short_description: "AI tutor for technical concepts, equations, code, and slides"
+  default_prompt: "Teach me this clearly, with plain-language notation and a concrete example."
